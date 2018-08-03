@@ -120,13 +120,12 @@ with open('makefile', 'w') as f:
 
 # purge and load modules
 if run_on_cluster:
-    sb.call('module purge', shell=True, cwd = os.getcwd())
-    sb.call('module load python', shell=True, cwd = os.getcwd())
-    sb.call('module load gcc', shell=True, cwd = os.getcwd())
-##potentially use
-#module use /projects/community/modulefiles
-#module load  boost/1.66.0-gc563
-##and just put this part in the bash file already!
+    sb.call('module purge', shell=True, cwd=os.getcwd())
+    # next 2 lines are for loading boost library
+    sb.call('module use /projects/community/modulefiles', shell=True, cwd=os.getcwd())
+    sb.call('module load  boost/1.66.0-gc563', shell=True, cdw=os.getcwd())
+    sb.call('module load python', shell=True, cwd=os.getcwd())
+    sb.call('module load gcc', shell=True, cwd=os.getcwd())
 # compile source file
 sb.call('make all', shell=True, cwd = os.getcwd())
 # path to the executable
