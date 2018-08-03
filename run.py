@@ -101,7 +101,7 @@ line_comp = ''
 line_link = ''
 line_all  = ''
 for f in cpp_files:
-    line_comp += '\n\n{0} : $(CPP) $(FLAGS) -c {0}.cpp'.format(f)
+    line_comp += '\n\n{0} :\n\t$(CPP) $(FLAGS) -c {0}.cpp'.format(f)
     line_link += ' {}.o'.format(f)
     line_all  += ' {}'.format(f)
 
