@@ -20,16 +20,17 @@ int main()
 	if (par.get_scenario() == "time_ss") {
 		for (int itr = 0; itr < Nitr; itr++) {
 			clock.start();
+
 			Population pop {par};
 			pop_stat.reset();
 			for (int gen = 0; gen < Ngen; gen++) {
 				pop_stat.update(pop, gen, itr);
 				pop.next_gen();
 			}
+
 			clock.stop();
-			clock.write_stat("progress_ss.txt");
+			clock.write_stat("progress.txt");
 		}
-		clock.write_data("times_ss.txt");
 	}
 	if (par.get_scenario() == "const") {
 		Population pop {par};
@@ -50,7 +51,7 @@ int main()
 			pop.write_prob_counts();
 		
 			clock.stop();
-			clock.write_stat("progress_itr.txt");
+			clock.write_stat("progress.txt");
 		}
 	}
 	if (par.get_scenario() == "bottleneck") {
@@ -72,10 +73,10 @@ int main()
 			pop.write_prob_counts();
 
 			clock.stop();
-			clock.write_stat("progress_itr.txt");
+			clock.write_stat("progress.txt");
 		}
 	}
-	clock.write_data("times_itr.txt");
+	clock.write_data("times.txt");
 
 	return 0;
 }
