@@ -74,9 +74,9 @@ RhoOverMu = [
 lists = (NetType, SampleSize, Theta, NatSel, RhoOverMu)
 
 runtime = {
-    0.1 : '2-1',
-    1.0 : '2-1',
-    10.0: '2-1',
+    0.1 : '05:00:00',
+    1.0 : '05:00:00',
+    10.0: '05:00:00',
 }
 
 # === bash parameters ====
