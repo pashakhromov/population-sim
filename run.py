@@ -175,8 +175,8 @@ for element in itertools.product(*lists):
         line += 'net_type,{}\n'.format(net_type)
         line += 'Npop,{:d}\n'.format(Npop)
         if net_type == 'FC':
-            line += 'Lalp,{:d}\n'.format(1)
-            line += 'Lseq,{:d}\n'.format(4 ** 10)
+            line += 'Lalp,{:d}\n'.format(4 ** 10)
+            line += 'Lseq,{:d}\n'.format(1)
         if net_type == 'SPM':
             line += 'Lalp,{:d}\n'.format(4)
             line += 'Lseq,{:d}\n'.format(10)
