@@ -21,7 +21,6 @@ def fitness_vec(nat_sel, Npop):
 
 Npop = 10 ** 3
 Nitr = 10 ** 5
-Nitr_ss = 1
 Ngen = 16 * 10 ** 6
 
 # number of points where measure mean fitness
@@ -33,7 +32,7 @@ Nepoch = 500
 top_frac = 0.5
 
 # regimes after reaching steady state
-Npop_dynamics = 'const' # 'const', 'bottleneck'
+scenario = 'const' # 'const', 'bottleneck', 'time_ss'
 # bottleneck
 Npop_lo = 267
 Npop_hi = 1200
@@ -176,12 +175,11 @@ for element in itertools.product(*lists):
         line += '\n'
         line += 'Ngen,{:d}\n'.format(Ngen)
         line += 'Nitr,{:d}\n'.format(Nitr)
-        line += 'Nitr_ss,{:d}\n'.format(Nitr_ss)
         line += 'sample_size,{:d}\n'.format(sample_size)
         line += 'Npar,{:d}\n'.format(Npar)
         line += 'Nepoch,{:d}\n'.format(Nepoch)
         line += 'top_frac,{:0.1f}\n'.format(top_frac)
-        line += 'Npop_dynamics,{}\n'.format(Npop_dynamics)
+        line += 'scenario,{}\n'.format(scenario)
         line += 'Npop_lo,{:d}\n'.format(Npop_lo)
         line += 'Npop_hi,{:d}\n'.format(Npop_hi)
         line += 'Ngen_lo,{:d}\n'.format(Ngen_lo)

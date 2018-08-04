@@ -2,6 +2,7 @@
 
 #include "pop.h"
 #include "clock.h"
+
 int main()
 {
     Clock clock {};
@@ -9,7 +10,6 @@ int main()
 	PopStat pop_stat {par};
 
     int Nitr = par.get_Nitr();
-    int Nitr_ss = par.get_Nitr_ss();
     int Ngen = par.get_Ngen();
 	int Ngen_lo = par.get_Ngen_lo();
 	int Ngen_hi = par.get_Ngen_hi();
@@ -17,23 +17,21 @@ int main()
 	int Npop_lo = par.get_Npop_lo();
 	int Npop_hi = par.get_Npop_hi();
 
-    for (int itr = 0; itr < Nitr_ss; itr++) {
-		clock.start();
-
-		Population pop {par};
-	
-		pop_stat.reset();
-		for (int gen = 0; gen < Ngen; gen++) {
-			pop_stat.update(pop, gen, itr);
-			pop.next_gen();
+	if (par.get_scenario() == "time_ss") {
+		for (int itr = 0; itr < Nitr; itr++) {
+			clock.start();
+			Population pop {par};
+			pop_stat.reset();
+			for (int gen = 0; gen < Ngen; gen++) {
+				pop_stat.update(pop, gen, itr);
+				pop.next_gen();
+			}
+			clock.stop();
+			clock.write_stat("progress_ss.txt");
 		}
-        clock.stop();
-		clock.write_stat("progress_ss.txt");
+		clock.write_data("times_ss.txt");
 	}
-	clock.write_data("times_ss.txt");
-
-	clock.reset();
-	if (par.get_Npop_dynamics() == "const"){
+	if (par.get_scenario() == "const") {
 		Population pop {par};
 		pop.evolve(Ngen);
 
@@ -55,7 +53,7 @@ int main()
 			clock.write_stat("progress_itr.txt");
 		}
 	}
-	else {
+	if (par.get_scenario() == "bottleneck") {
 		Population pop {par};
 
 		for (int itr = 0; itr < Nitr; itr++) {

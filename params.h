@@ -35,7 +35,7 @@ class Parameters
 		
 		// Population
         // population size: const or bottleneck
-		string Npop_dynamics;
+		string scenario;
 		int Npop;
         int Npop_lo;
         int Npop_hi;
@@ -52,7 +52,6 @@ class Parameters
         int Ngen_hi;
 		// number of iterations
 		int Nitr;
-		int Nitr_ss;
 		int Nepoch;
 		int epoch_len;
 		double top_frac;
@@ -70,7 +69,7 @@ class Parameters
 		const vector<int>& get_cutoff() const {return cutoff;}
 		const vector<double>& get_frac() const {return fractions;}
 
-		const string& get_Npop_dynamics() const {return Npop_dynamics;}
+		const string& get_scenario() const {return scenario;}
 		int get_Npop() const {return Npop;}
 		int get_Npop_lo() const {return Npop_lo;}
 		int get_Npop_hi() const {return Npop_hi;}
@@ -84,7 +83,6 @@ class Parameters
 		int get_Ngen_hi() const {return Ngen_hi;}
 
 		int get_Nitr() const { return Nitr; }
-		int get_Nitr_ss() const { return Nitr_ss; }
 		int get_Nepoch() const { return Nepoch; }
 		double get_top_frac() const { return top_frac; }
 };

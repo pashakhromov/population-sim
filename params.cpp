@@ -12,8 +12,8 @@ Parameters::Parameters()
 		if (vec[0] == "net_type") {
             network_type = vec[1];
         }
-        if (vec[0] == "Npop_dynamics") {
-            Npop_dynamics = vec[1];
+        if (vec[0] == "scenario") {
+            scenario = vec[1];
         }
         // int
         if (vec[0] == "sample_size") {
@@ -45,9 +45,6 @@ Parameters::Parameters()
         }
         if (vec[0] == "Nitr") {
             Nitr = stoi(vec[1]);
-        }
-        if (vec[0] == "Nitr_ss") {
-            Nitr_ss = stoi(vec[1]);
         }
         if (vec[0] == "Npart") {
             Npart = stoi(vec[1]);
@@ -123,7 +120,7 @@ Parameters::Parameters()
 std::ostream& operator<<(std::ostream& stream, const Parameters& param)
 {
     cout << "net_type " << param.get_net_type() << "\n";
-    cout << "Npop_dynamics " << param.get_Npop_dynamics() << "\n";
+    cout << "scenario " << param.get_scenario() << "\n";
 
     cout << "Lalp = " << param.get_Lalp() << "\n";
     cout << "Lseq = " << param.get_Lseq() << "\n";
@@ -137,7 +134,6 @@ std::ostream& operator<<(std::ostream& stream, const Parameters& param)
     cout << "Ngen_hi = " << param.get_Ngen_hi() << "\n";
 
     cout << "Nitr = " << param.get_Nitr() << "\n";
-    cout << "Nitr_ss = " << param.get_Nitr_ss() << "\n";
 
     cout << "Npart = " << param.get_Npart() << "\n";
     cout << "Nepoch = " << param.get_Nepoch() << "\n";
