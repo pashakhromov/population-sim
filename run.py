@@ -122,7 +122,7 @@ if run_on_cluster:
     sb.call('module purge', shell=True, cwd=os.getcwd())
     # next 2 lines are for loading boost library
     sb.call('module use /projects/community/modulefiles', shell=True, cwd=os.getcwd())
-    sb.call('module load  boost/1.66.0-gc563', shell=True, cdw=os.getcwd())
+    sb.call('module load  boost/1.66.0-gc563', shell=True, cwd=os.getcwd())
     sb.call('module load python', shell=True, cwd=os.getcwd())
     sb.call('module load gcc', shell=True, cwd=os.getcwd())
 # compile source file
