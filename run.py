@@ -107,11 +107,13 @@ for f in cpp_files:
 line += line_comp
 line += """
 
-link : $(CPP) $(FLAGS) -o {0}{1}
+link :
+\t$(CPP) $(FLAGS) -o {0}{1}
 
 all :{2} link
 
-clean : rm -f {0}{1}""".format(exec_name, line_link, line_all)
+clean :
+\trm -f {0}{1}""".format(exec_name, line_link, line_all)
 
 # write makefile
 with open('makefile', 'w') as f:
