@@ -44,9 +44,20 @@ frac_3_mid = 0.2099971771
 frac_3_bot = 1 - frac_3_mid - frac_3_top
 gamma_vec = [frac_3_bot, frac_3_mid, frac_3_top]
 
-NetType = ['FC', 'SPM']
-SampleSize = [3, 4, 5]
-Theta = [0.1, 1.0, 10.0]
+NetType = [
+    'FC',
+    'SPM',
+]
+SampleSize = [
+    3,
+    4,
+    5,
+]
+Theta = [
+    0.1,
+    1.0,
+    10.0,
+]
 NatSel = [
     (0.0, 0.0),
     (6.0, 0.0),
@@ -54,7 +65,11 @@ NatSel = [
     (13.0, 0.0),
     (13.0, 5.0),
 ]
-RhoOverMu = [0.0, 1.0, 2.0]
+RhoOverMu = [
+    0.0,
+    1.0,
+    2.0
+]
 
 lists = (NetType, SampleSize, Theta, NatSel, RhoOverMu)
 
