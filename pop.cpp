@@ -157,17 +157,17 @@ void Population::print(const string& msg) const {
 void Population::print_prob_counts(const string& msg) const {
 	cout << msg << "\n";
 	for (const auto& c : prob_counts) {
-		cout << c.first << ":" << c.second << "\n";
+		cout << "{" << c.first << "}:" << c.second << "\n";
 	}
 }
 
 void Population::write_prob_counts(const string& fname) const {
-        std::ofstream f;
-        f.open (fname);
-		for (const auto& c : prob_counts) {
-			f << c.first << ":" << c.second << "\n";
-		}
-        f.close();
+	std::ofstream f;
+	f.open (fname);
+	for (const auto& c : prob_counts) {
+		f << "{" << c.first << "}:" << c.second << "\n";
+	}
+	f.close();
 }
 
 PopStat::PopStat(const Parameters& par) {

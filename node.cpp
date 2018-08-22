@@ -112,11 +112,10 @@ template<class T>
 std::ostream& operator<<(std::ostream& stream, const vector<T>& vec) {
 	// print vector
 	int last = vec.size() - 1;
-	stream << '{';
 	for (int i = 0; i < last; i++) {
 		stream << vec.at(i) << ",";
 	}
-	stream << vec.at(last) << '}';
+	stream << vec.at(last);
 	return stream;
 }
 
