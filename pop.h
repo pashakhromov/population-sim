@@ -42,6 +42,7 @@ class Population
 		int get_Npop() const { return pop.size(); }
 		// prints all Nodes in Population
 		void print(const string& msg = "Population") const;
+		void write(const string& fname = "pop.txt") const;
 		void print_prob_counts(const string& msg = "Probability counts") const;
 		void write_prob_counts(const string& fname = "prob_counts.txt") const;
 };
