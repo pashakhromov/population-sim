@@ -6,7 +6,7 @@
 Parameters::Parameters()
 {
     auto dataList = CSVReader(paramFile).getData();
-    for(vector<string> vec : dataList)
+    for(const auto& vec : dataList)
 	{
         // string
 		if (vec[0] == "net_type") {
