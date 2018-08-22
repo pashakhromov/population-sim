@@ -23,7 +23,7 @@ class Population
 		for bottleneck scenario. */
 
 		// === Constructors ===
-		explicit Population(const Parameters& p);
+		explicit Population(const Parameters& p, const string& fname = "");
 
 		// === Functionality ===
 		// returns fitness of the population
@@ -43,6 +43,7 @@ class Population
 		// prints all Nodes in Population
 		void print(const string& msg = "Population") const;
 		void write(const string& fname = "pop.txt") const;
+		void read(const string& fname);
 		void print_prob_counts(const string& msg = "Probability counts") const;
 		void write_prob_counts(const string& fname = "prob_counts.txt") const;
 };

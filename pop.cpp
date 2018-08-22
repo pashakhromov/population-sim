@@ -4,14 +4,30 @@
 
 // === Constructors ===
 
-Population::Population(const Parameters& p) {
+Population::Population(const Parameters& p, const string& fname) {
 	par = p;
 
 	for (const auto& part : p.get_part()) {
 		prob_counts[part] = 0;
 	}
 
-	this->rand_pop();
+	if (fname == "") {
+		this->rand_pop();
+	}
+	else {
+		read(fname);
+	}
+}
+
+void Population::read(const string& fname) {
+	auto dataList = CSVReader(fname).getData();
+	for(const auto& vec : dataList) {
+		vector<int> n;
+		for (const auto& v : vec) {
+			n.push_back( stoi(v) );
+		}
+		pop.push_back( Node {n} );
+	}
 }
 
 void Population::rand_pop() {
