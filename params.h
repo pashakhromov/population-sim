@@ -7,9 +7,6 @@
 
 class Parameters
 {
-	string paramFile = "param.txt";
-	string partFile = "partitions.txt";
-
 	protected:
 		// Network
 		// network type: FC or SPM
@@ -57,7 +54,7 @@ class Parameters
 		double top_frac;
 	
 	public:
-		explicit Parameters();
+		explicit Parameters(const string& paramFile = "param.txt", const string& partFile = "partitions.txt");
 
 		const string& get_net_type() const {return network_type;}
 		int get_Lseq() const {return Lseq;}
