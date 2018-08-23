@@ -53,7 +53,7 @@ int main()
 			clock.stop();
 			clock.write_stat("progress.txt");
 		}
-		if (par.get_write_pop) {
+		if (par.get_write_pop()) {
 			pop.write();
 		}
 	}
