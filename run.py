@@ -20,7 +20,11 @@ def fitness_vec(nat_sel, Npop):
     return 1.0 + f * 1.0 / Npop
 
 Npop = 10 ** 3
-Nitr = 10 ** 5
+Nitr = {
+    0.1  : 8 * 10 ** 5,
+    1.0  : 10 ** 6,
+    10.0 : 10 ** 6,
+}
 Ngen = 16 * 10 ** 6
 
 # number of points where measure mean fitness
@@ -29,7 +33,7 @@ Nepoch = 500
 
 # fraction of population with the highest fitness
 # when generating initial random population
-top_frac = 0.5
+top_frac = 0.0
 
 # regimes after reaching steady state
 scenario = 'const' # 'const', 'bottleneck', 'time_ss'
@@ -77,6 +81,11 @@ runtime = {
     0.1 : '05:00:00',
     1.0 : '05:00:00',
     10.0: '05:00:00',
+}
+write_pop = {
+    0.1  : 1, # write
+    1.0  : 0,
+    10.0 : 0,
 }
 
 # === bash parameters ====
@@ -191,7 +200,7 @@ for element in itertools.product(*lists):
             line += ',{:0.10f}'.format(g)
         line += '\n'
         line += 'Ngen,{:d}\n'.format(Ngen)
-        line += 'Nitr,{:d}\n'.format(Nitr)
+        line += 'Nitr,{:d}\n'.format(Nitr[theta])
         line += 'sample_size,{:d}\n'.format(sample_size)
         line += 'Npar,{:d}\n'.format(Npar)
         line += 'Nepoch,{:d}\n'.format(Nepoch)
@@ -201,6 +210,7 @@ for element in itertools.product(*lists):
         line += 'Npop_hi,{:d}\n'.format(Npop_hi)
         line += 'Ngen_lo,{:d}\n'.format(Ngen_lo)
         line += 'Ngen_hi,{:d}\n'.format(Ngen_hi)
+        line += 'write_pop,{:d}\n'.format(write_pop[theta])
         
         sb.call('touch param.txt', shell=True, cwd=dir_path)
         with open(os.path.join(dir_path, 'param.txt'), 'w') as f:

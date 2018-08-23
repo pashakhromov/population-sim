@@ -53,6 +53,9 @@ int main()
 			clock.stop();
 			clock.write_stat("progress.txt");
 		}
+		if (par.get_write_pop) {
+			pop.write();
+		}
 	}
 	if (par.get_scenario() == "bottleneck") {
 		Population pop {par};

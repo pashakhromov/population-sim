@@ -36,6 +36,7 @@ class Parameters
 		int Npop;
         int Npop_lo;
         int Npop_hi;
+		bool write_pop;
 
 		// Sampling
 		int sample_size;
@@ -82,6 +83,8 @@ class Parameters
 		int get_Nitr() const { return Nitr; }
 		int get_Nepoch() const { return Nepoch; }
 		double get_top_frac() const { return top_frac; }
+
+		bool get_write_pop() const { return write_pop; }
 };
 
 // print Parameters object

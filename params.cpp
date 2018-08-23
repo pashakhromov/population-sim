@@ -3,7 +3,7 @@
 #include "params.h"
 
 
-Parameters::Parameters()
+Parameters::Parameters(const string& paramFile, const string& partFile)
 {
     auto dataList = CSVReader(paramFile).getData();
     for(const auto& vec : dataList)
@@ -14,6 +14,15 @@ Parameters::Parameters()
         }
         if (vec[0] == "scenario") {
             scenario = vec[1];
+        }
+        // bool
+        if (vec[0] == "write_pop") {
+            if (vec[1] == "1") {
+                write_pop = true;
+            }
+            if (vec[1] == "0") {
+                write_pop = false;
+            }
         }
         // int
         if (vec[0] == "sample_size") {
