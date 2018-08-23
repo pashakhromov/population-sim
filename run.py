@@ -7,6 +7,7 @@ import itertools
 from partition import partition_repr
 
 run_on_cluster = True
+node = 'broadwell'
 
 def mu(theta, Npop):
     return theta / Npop
@@ -100,7 +101,7 @@ if run_on_cluster:
 else:
     compiler = 'CPP = g++' # 'CPP = g++-4.9'
 
-cpp_files = ['clock', 'csv_reader', 'node', 'params', 'pop', 'simulation']
+cpp_files = ['clock', 'csv_reader', 'node', 'params', 'pop', exec_name]
 
 # === make and compile ===
 
@@ -232,6 +233,7 @@ for element in itertools.product(*lists):
             # bash file content
             line = """#!/bin/bash
 
+#SBATCH --constraint={node}
 #SBATCH --partition=main
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -240,7 +242,7 @@ for element in itertools.product(*lists):
 #SBATCH --time={runtime}
 #SBATCH --output=slurm.%N.%j.out
 #SBATCH --export=ALL
-./{exec_name}""".format(runtime=runtime[theta], exec_name=exec_name)
+./{exec_name}""".format(runtime=runtime[theta], exec_name=exec_name, node=node)
 
             # write bash file
             with open(os.path.join(dir_path, bash_name), 'w') as f:
