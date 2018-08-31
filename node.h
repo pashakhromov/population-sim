@@ -14,9 +14,22 @@ using namespace std::rel_ops;
 // ================= necessary functions =========================
 // ===============================================================
 
+/*
 // print std::vector
 template<class T>
 std::ostream& operator<<(std::ostream& stream, const vector<T>& vec);
+*/
+// Template function should be defined in the header file otherwise linker errors
+template<class T>
+std::ostream& operator<<(std::ostream& stream, const vector<T>& vec) {
+	// print vector
+	int last = vec.size() - 1;
+	for (int i = 0; i < last; i++) {
+		stream << vec.at(i) << ",";
+	}
+	stream << vec.at(last);
+	return stream;
+}
 
 // random numbers
 int rand_int(const int min_val, const int max_val);

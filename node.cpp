@@ -108,6 +108,7 @@ std::ostream& operator<<(std::ostream& stream, const Node& node) {
 // ================= necessary functions =========================
 // ===============================================================
 
+/*
 template<class T>
 std::ostream& operator<<(std::ostream& stream, const vector<T>& vec) {
 	// print vector
@@ -118,6 +119,7 @@ std::ostream& operator<<(std::ostream& stream, const vector<T>& vec) {
 	stream << vec.at(last);
 	return stream;
 }
+*/
 
 int rand_int(const int min_val, const int max_val) {
 	// returns random integer from closed interval [min_val, max_val]
