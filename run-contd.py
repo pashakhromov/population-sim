@@ -9,7 +9,7 @@ from partition import partition_repr
 run_on_cluster = True
 node = 'broadwell'
 
-runtime = '16:00:00'
+runtime = '18:16:56'
 
 # === bash parameters ====
 # number of cores

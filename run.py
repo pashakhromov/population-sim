@@ -26,7 +26,11 @@ Nitr = {
     1.0  : 10 ** 6,
     10.0 : 10 ** 6,
 }
-Ngen = 16 * 10 ** 6
+Ngen = {
+    0.1  : 512 * 10 ** 6,
+    1.0  :  64 * 10 ** 6,
+    10.0 :  16 * 10 ** 6,
+}
 
 # number of points where measure mean fitness
 # when approaching steady state
@@ -41,8 +45,16 @@ scenario = 'const' # 'const', 'bottleneck', 'time_ss'
 # bottleneck
 Npop_lo = 267
 Npop_hi = 1200
-Ngen_lo = 6400000
-Ngen_hi = 12800000
+Ngen_lo = {
+    0.1  : 128 * 10 ** 6,
+    1.0  :  32 * 10 ** 6,
+    10.0 :   8 * 10 ** 6,
+}
+Ngen_hi = {
+    0.1  : 512 * 10 ** 6,
+    1.0  :  64 * 10 ** 6,
+    10.0 :  32 * 10 ** 6,
+}
 
 frac_3_top = 0.0322275162
 frac_3_mid = 0.2099971771
@@ -79,9 +91,9 @@ RhoOverMu = [
 lists = (NetType, SampleSize, Theta, NatSel, RhoOverMu)
 
 runtime = {
-    0.1 : '05:00:00',
-    1.0 : '05:00:00',
-    10.0: '05:00:00',
+    0.1 : '62:36:56',
+    1.0 : '09:03:48',
+    10.0: '01:31:14',
 }
 write_pop = {
     0.1  : 1, # write
@@ -200,7 +212,7 @@ for element in itertools.product(*lists):
         for g in gamma_vec:
             line += ',{:0.10f}'.format(g)
         line += '\n'
-        line += 'Ngen,{:d}\n'.format(Ngen)
+        line += 'Ngen,{:d}\n'.format(Ngen[theta])
         line += 'Nitr,{:d}\n'.format(Nitr[theta])
         line += 'sample_size,{:d}\n'.format(sample_size)
         line += 'Npar,{:d}\n'.format(Npar)
@@ -209,8 +221,8 @@ for element in itertools.product(*lists):
         line += 'scenario,{}\n'.format(scenario)
         line += 'Npop_lo,{:d}\n'.format(Npop_lo)
         line += 'Npop_hi,{:d}\n'.format(Npop_hi)
-        line += 'Ngen_lo,{:d}\n'.format(Ngen_lo)
-        line += 'Ngen_hi,{:d}\n'.format(Ngen_hi)
+        line += 'Ngen_lo,{:d}\n'.format(Ngen_lo[theta])
+        line += 'Ngen_hi,{:d}\n'.format(Ngen_hi[theta])
         line += 'write_pop,{:d}\n'.format(write_pop[theta])
         
         sb.call('touch param.txt', shell=True, cwd=dir_path)
