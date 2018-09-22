@@ -35,6 +35,8 @@ class Population
 		const Node& rand_node() const;
 		void take_sample();
 		void resize(int N);
+		int seg_sites(int n = 0) const;
+		double Tajima(int n = 0) const;
 
 		// === Printing an returning members ===
 		// returns Population

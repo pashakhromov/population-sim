@@ -159,6 +159,37 @@ void Population::resize(int N) {
 	}
 }
 
+int Population::seg_sites(int n) const {
+	int S = 0;
+	int Lseq = par.get_Lseq();
+	int Npop = pop.size();
+	if (n > Npop or n <= 0) {
+		n = Npop;
+	}
+	for (int pos = 0; pos < Lseq; pos++) {
+		int val = pop.at(0).show().at(pos);
+		for (int i = 1; i < n; i++) {
+			if (pop.at(i).show().at(pos) != val) {
+				S++;
+				break;
+			}
+		}
+	}
+	return S;
+}
+
+double Population::Tajima(int n) const {
+	int Npop = pop.size();
+	if (n > Npop or n <= 0) {
+		n = Npop;
+	}
+	double a1 = 0.0;
+	for (int i = 1; i < n; i++) {
+		a1 += 1.0 / i;
+	}
+	return seg_sites(n) / a1;
+}
+
 
 
 // === Printing an returning members ===
