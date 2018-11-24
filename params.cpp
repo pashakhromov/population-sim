@@ -85,7 +85,15 @@ Parameters::Parameters(const string& paramFile, const string& partFile)
 	}
 
 	// network size (Nnet)
-	Nnet = static_cast<int>( std::round( std::pow(Lalp, Lseq) ) );
+    // note for SPM: Nnet is not used for SPM but
+    // when working with long seq Nnet = Lalp ^ Lseq
+    // could be over the int limit and crash the run
+    if (network_type == "SPM") {
+        Nnet = 10;
+    }
+    else {
+        Nnet = static_cast<int>( std::round( std::pow(Lalp, Lseq) ) );
+    }
 	
 	// cutoff
 	// SPM
