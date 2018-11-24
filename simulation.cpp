@@ -30,6 +30,10 @@ int main()
 
 			clock.stop();
 			clock.write_stat("progress.txt");
+
+			if (par.get_write_pop() and itr==0) {
+				pop.write();
+			}
 		}
 	}
 	if (par.get_scenario() == "const") {
