@@ -61,6 +61,22 @@ int main()
 			pop.write();
 		}
 	}
+	if (par.get_scenario() == "const_spm") {
+		Population pop {par};
+
+		for (int itr = 0; itr < Nitr; itr++) {
+			clock.start();
+
+			pop.rand_pop();
+			pop.evolve(Ngen);
+
+			pop.take_sample();
+			pop.write_prob_counts();
+
+			clock.stop();
+			clock.write_stat("progress.txt");
+		}
+	}
 	if (par.get_scenario() == "bottleneck") {
 		Population pop {par};
 
