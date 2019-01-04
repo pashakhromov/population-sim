@@ -68,7 +68,11 @@ int main()
 			clock.start();
 
 			pop.rand_pop();
-			pop.evolve(Ngen);
+			pop_stat.reset();
+			for (int gen = 0; gen < Ngen; gen++) {
+				pop_stat.update(pop, gen, itr);
+				pop.next_gen();
+			}
 
 			pop.take_sample();
 			pop.write_prob_counts();
